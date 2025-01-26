@@ -1,0 +1,54 @@
+{
+  "name": "physical-training-management-platform",
+  "version": "1.0.0",
+  "description": "An API to manage a platform dedicated to gyms, gym owners and end users.",
+  "main": "server.ts",
+  "scripts": {
+    "start": "tsc && node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horotopia/physical-training-management-platform.git"
+  },
+  "keywords": [
+    "gym"
+  ],
+  "author": "Guirado Léo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/horotopia/physical-training-management-platform/issues"
+  },
+  "homepage": "https://github.com/horotopia/physical-training-management-platform#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.7",
+    "eslint": "^9.18.0",
+    "prettier": "^3.4.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "cors": "^2.8.5",
+    "helmet": "^8.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
