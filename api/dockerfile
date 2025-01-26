@@ -1,0 +1,22 @@
+FROM node:22.9.0-alpine3.20 AS base
+WORKDIR /api
+
+# development stage
+FROM base AS development
+EXPOSE 5000
+ENTRYPOINT ["/bin/sh", "-c","npm i -D && npm run dev"]
+
+# build stage
+FROM base AS build
+COPY . .
+RUN npm install
+RUN npm run build
+
+# production stage
+FROM nginx:1.27.1-alpine3.20 AS production
+
+COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /api/dist /opt/app
+
+EXPOSE 80
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
