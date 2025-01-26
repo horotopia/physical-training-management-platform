@@ -1,0 +1,46 @@
+services:
+  api:
+    container_name: physical-training-management-platform-api
+    build:
+      context: ./api
+      target: development
+    env_file: ./api/.env
+    volumes:
+      - ./api:/api
+    ports:
+      - 5000:5000
+      - 8081:80
+    depends_on:
+      - mongodb
+    networks:
+      - mevn
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    env_file: ./mongo/.env
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - mongo_db:/data/db
+    networks:
+      - mevn
+
+  mongo-express:
+    image: mongo-express:1.0.2-20-alpine3.19
+    container_name: mongo-express
+    restart: always
+    env_file: ./mongo/.env
+    ports:
+      - 8082:8081
+    networks:
+      - mevn
+    depends_on:
+      - mongodb
+
+networks:
+  mevn:
+
+volumes:
+  mongo_db:
